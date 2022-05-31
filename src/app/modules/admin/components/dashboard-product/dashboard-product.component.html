@@ -1,0 +1,26 @@
+<app-admin-dashboard-sidenav></app-admin-dashboard-sidenav>
+<div class="content">
+  <div class="container mt-4">
+    <app-title [titleText]="'Producten'"></app-title>
+    <div class="table-responsive">
+      <table class="table mt-3 text-center table-hover">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Naam</th>
+            <th scope="col">Prijs</th>
+            <th scope="col">Actief</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let product of (products$ | async)">
+            <th scope="row">{{product.id}}</th>
+            <td>{{product.name}}</td>
+            <td>{{product.price}}</td>
+            <td><i *ngIf="product.active" class="fas fa-check"></i><i *ngIf="!product.active" class="fas fa-times"></i></td>
+          </tr>
+          </tbody>
+      </table>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,38 @@
+<div class="container mt-4">
+  <app-title [titleText]="'Inloggen'"></app-title>
+  <div class="alert alert-danger" *ngIf="errorMessage != ''">
+    <span>{{ errorMessage }}</span>
+  </div>
+  <form class="mt-2" (ngSubmit)="onSubmit()">
+    <div class="form-group mb-4">
+      <label for="exampleInputEmail1">E-mail</label>
+      <input type="email" placeholder="Vul hier je e-mail in" class="form-control" name="exampleInputEmail1"
+        id="exampleInputEmail1" aria-describedby="emailHelp" [(ngModel)]="user.email" required>
+    </div>
+    <div class="form-group mb-4">
+      <label for="exampleInputPassword1">Wachtwoord</label>
+      <input type="password" placeholder="Vul hier je wachtwoord in" class="form-control" name="exampleInputPassword1"
+        id="exampleInputPassword1" [(ngModel)]="user.password" required>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-5 col-lg-4">
+        <button type="submit" class="btn btn-dark text-left mb-3 text-center">Inloggen</button>
+      </div>
+      <div class="col-sm-12 col-md-5 col-lg-4 text-left">
+        <button type="button" class="btn btn-dark text-left mb-3 text-center"
+          routerLink="/registreren">Registreren</button>
+      </div>
+      <div class="col-sm-12">
+        <a routerLink="/registreren/organisatie">Registreren als vzw</a>
+      </div>
+    </div>
+  </form>
+  <div class="row">
+    <div class="col-sm-12 col-md-6">
+
+    </div>
+    <div class="col-sm-12 col-md-6 mb-5">
+
+    </div>
+  </div>
+</div>

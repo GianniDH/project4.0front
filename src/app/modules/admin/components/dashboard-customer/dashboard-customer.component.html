@@ -1,0 +1,24 @@
+<app-admin-dashboard-sidenav></app-admin-dashboard-sidenav>
+<div class="content">
+  <div class="container mt-4">
+    <app-title [titleText]="'Klanten'"></app-title>
+    <div class="table-responsive">
+      <table class="table mt-3 text-center table-hover">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Naam</th>
+            <th scope="col">E-mail</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let customer of (customers$ | async)">
+            <th scope="row">{{customer.id}}</th>
+            <td>{{customer.firstName}} {{customer.lastName}}</td>
+            <td>{{customer.email}}</td>
+          </tr>
+          </tbody>
+      </table>
+    </div>
+  </div>
+</div>

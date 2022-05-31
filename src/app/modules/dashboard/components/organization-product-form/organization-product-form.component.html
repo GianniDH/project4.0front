@@ -1,0 +1,79 @@
+<app-dashboard-sidenav></app-dashboard-sidenav>
+<div class="content">
+  <div class="container mt-4">
+    <div class="alert alert-danger" role="alert" *ngIf="isSubmitted && errorMessage">
+      {{errorMessage}}
+    </div>
+    <app-title [titleText]="'Product'"></app-title>
+    <form (ngSubmit)="onSubmit()" [formGroup]="productForm" class="mb-5">
+      <div class="form-group">
+        <label for="name">Naam</label>
+        <input type="text" class="form-control" id="name" name="name" placeholder="Naam" formControlName="name" minlength="3" maxlength="50">
+      </div>
+      <div class="form-group">
+        <label for="price">Prijs</label>
+        <input type="number" class="form-control" id="price" name="price" placeholder="Prijs" formControlName="price" minlength="0" maxlength="9999">
+      </div>
+      <div class="form-group">
+        <label for="description">Beschrijving</label>
+        <input type="text" class="form-control" id="description" name="description" placeholder="Beschrijving" formControlName="description" minlength="1" maxlength="255">
+      </div>
+      <div class="form-group">
+        <label for="category">Categorie</label>
+        <select class="form-control" formControlName="category" id="category">
+          <option value="" disabled>Kies een categorie</option>
+          <option *ngFor="let category of (categories$ | async)" value="{{category.id}}">{{category.name}}</option>
+        </select>
+      </div>
+      <div class="form-group">
+          <label for="imageUrl">Afbeelding</label>
+          <input
+            id="imageUrl"
+            type="file"
+            class="form-control"
+            autocomplete="off"
+            (change)="onImageSelected($event)"
+            accept=".png,.jpg">
+          <div *ngIf="isSubmitted && uploadProgress">
+            <progress max="100" [value]="(uploadProgress)"></progress>
+          </div>
+        </div>
+        <div *ngIf="isEdit && imageSrc">
+          <img src="{{imageSrc}}" alt="article image">
+        </div>
+      <div class="form-group">
+        <input type="checkbox" formControlName="active" id="active" class="mr-2">
+        <label for="active">Actief</label>
+      </div>
+      <button type="submit" class="btn btn-blue" *ngIf="isAdd" [disabled]="!productForm.valid || isSubmitted">Toevoegen</button>
+      <button type="submit" class="btn btn-blue" *ngIf="isEdit" [disabled]="!productForm.valid || isSubmitted">Opslaan</button>
+    </form>
+    <h4>Stock toevoegen</h4>
+    <app-button-add [buttonText]="'Stock toevoegen'" (click)="addStock()"></app-button-add>
+    <div class="table-responsive">
+      <table class="table mt-3 text-center table-hover">
+        <thead class="thead-dark">
+        <tr>
+          <th scope="col">Naam</th>
+          <th scope="col">Aantal in stock</th>
+          <th scope="col">Maat</th>
+          <th scope="col">Kleur</th>
+          <th scope="col">Acties</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let stock of (stocks$ | async)">
+          <td>{{stock.product.name}}</td>
+          <td>{{stock.amountInStock}}</td>
+          <td>{{stock.size.name}}</td>
+          <td>{{stock.color.name}}</td>
+          <td>
+            <button type="button" class="btn btn-success mr-2" title="Bewerken: {{stock.id}}" (click)="edit(stock.id)"><i class="fas fa-edit"></i></button>
+            <button type="button" class="btn btn-danger" (click)="delete(stock.id)"><i class="far fa-trash-alt"></i></button>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+      </div>
+  </div>
+</div>

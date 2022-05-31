@@ -1,0 +1,37 @@
+.bg-blue {
+  background-color: #031c29;
+}
+
+.nav-link, .navbar-brand {
+  color: white !important;
+  cursor: pointer;
+}
+
+.navbar-brand{
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+}
+
+.navbar-toggler{
+  border: none;
+  padding: 0;
+}
+
+.navbar-toggler-icon {
+  background-image: none;
+}
+.navbar-toggler-icon::before {
+  font-family: "Font Awesome 5 Free"; font-weight: 600; content: "\f0c9";
+  color: white;
+  font-size: 1.5rem;
+}
+
+.navbar-cart-icon::before {
+  font-family: "Font Awesome 5 Free"; font-weight: 600; content: "\f07a";
+  color: white;
+  font-size: 1.25rem;
+}
+
+a.active {
+  color: #b6d5e7 !important;
+}

@@ -1,0 +1,41 @@
+.card {
+  background: rgb(8,52,75);
+  background: linear-gradient(90deg, rgba(8,52,75,1) 0%, rgba(12,78,113,1) 50%, rgba(16,105,152,1) 100%);
+  color: white;
+  height: 120px;
+  cursor: pointer;
+}
+
+.bigger-font {
+  font-size: 1.08rem;
+  font-weight: bold;
+}
+
+.bg-blue {
+  background-color: white;
+  color: #031c29;
+}
+
+.test-shadow {
+  /*box-shadow: 0 2.8px 2.2px rgba(0, 0, 0, 0.034),
+  0 6.7px 5.3px rgba(0, 0, 0, 0.048),
+  0 12.5px 10px rgba(0, 0, 0, 0.06),
+  0 22.3px 17.9px rgba(0, 0, 0, 0.072),
+  0 41.8px 33.4px rgba(0, 0, 0, 0.086),
+  0 100px 80px rgba(0, 0, 0, 0.12);*/
+  box-shadow: rgba(0, 0, 0, 0.4) 0px 30px 90px;
+}
+
+div.content {
+  margin-left: 200px;
+  padding: 1px 16px;
+  height: 1000px;
+}
+
+@media screen and (max-width: 700px) {
+  div.content {margin-left: 0;}
+}
+
+
+
+

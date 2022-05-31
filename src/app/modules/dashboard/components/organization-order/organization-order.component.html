@@ -1,0 +1,30 @@
+<app-dashboard-sidenav></app-dashboard-sidenav>
+<div class="content">
+  <div class="container mt-4">
+    <app-title [titleText]="'Bestellingen'"></app-title>
+  <div class="table-responsive">
+    <table class="table mt-3 text-center table-hover">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Datum</th>
+          <th scope="col">Aantal producten</th>
+          <th scope="col">Prijs</th>
+        </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let orderdetail of (orderdetail$ | async)">
+        <th scope="row">{{orderdetail.id}}</th>
+        <td>{{orderdetail.order.date | date}}</td>
+        <td>{{orderdetail.amount}}</td>
+        <td>€ {{(orderdetail.product.price * orderdetail.amount)}}</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+  </div>
+</div>
+
+
+
+

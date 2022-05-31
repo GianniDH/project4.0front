@@ -1,0 +1,33 @@
+<app-dashboard-sidenav></app-dashboard-sidenav>
+<div class="content">
+  <div class="container mt-4">
+    <app-title [titleText]="'Producten beheren'"></app-title>
+
+    <div class="alert alert-danger" role="alert" *ngIf="errorMessage">
+      {{errorMessage}}
+    </div>
+    <app-button-add [buttonText]="'Product toevoegen'" (click)="add()"></app-button-add>
+    <div class="table-responsive">
+    <table class="table mt-3 text-center table-hover">
+      <thead class="thead-dark">
+      <tr>
+        <th scope="col">Naam</th>
+        <th scope="col">Prijs</th>
+        <th scope="col">Actief</th>
+        <th scope="col">Acties</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let product of (products$ | async)">
+        <td>{{product.name}}</td>
+        <td>{{product.price}}</td>
+        <td><i *ngIf="product.active" class="fas fa-check"></i><i *ngIf="!product.active" class="fas fa-times"></i></td>
+        <td>
+          <button type="button" class="btn btn-success mr-2" title="Bewerken: {{product.name}}" (click)="edit(product.id)"><i class="fas fa-edit"></i></button>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+    </div>
+  </div>
+</div>

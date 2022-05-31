@@ -1,0 +1,94 @@
+<div class="container mt-4">
+  <app-title [titleText]="'Registreren'"></app-title>
+  <div class="alert alert-danger" *ngIf="errorMessage != ''">
+    <span>{{ errorMessage }}</span>
+  </div>
+  <div class="row">
+    <div class="col-12">
+      <form class="mt-2" (ngSubmit)="onSubmit()">
+        <app-form #progress (stateChange)="onStateChange($event)">
+          <app-step>
+            <div class="col-12">
+              <h5>Bedrijfsgegevens</h5>
+            </div>
+            <div class="form-group mb-4 col-12 col-md-8 mt-3">
+              <label for="organizationName">VZW-naam</label>
+              <input type="text" class="form-control" id="organizationName" name="organizationName"
+                [(ngModel)]="organization.organizationName">
+            </div>
+
+            <div class="form-group mb-4 col-12 col-md-8 mt-3">
+              <label for="companyRegistrationNr">Ondernemingsnummer</label>
+              <input type="text" class="form-control" id="companyRegistrationNr" name="companyRegistrationNr"
+                [(ngModel)]="organization.companyRegistrationNr">
+            </div>
+
+            <div class="form-group mb-4 col-12 col-md-8 mt-3">
+              <label for="vatNr">BTW-nummer</label>
+              <input type="text" class="form-control" id="vatNr" name="vatNr" [(ngModel)]="organization.vatNr">
+            </div>
+
+            <div class="form-group mb-4 col-12 col-md-8 mt-3">
+              <label for="tel">Telefoonnummer</label>
+              <input type="text" class="form-control" id="tel" name="tel" [(ngModel)]="organization.phoneNr">
+            </div>
+
+            <app-button [buttonText]="'Volgende stap'" (click)="goNext(progress)"></app-button>
+          </app-step>
+
+          <app-step>
+            <div class="col-12">
+              <h5>Adresgegevens</h5>
+            </div>
+
+            <div class="form-group mb-4 col-12 col-md-8 mt-3">
+              <label for="country">Land</label>
+              <input type="text" class="form-control" id="country" name="country" [(ngModel)]="organization.country">
+            </div>
+
+            <div class="form-group mb-4 col-12 col-md-8 mt-3">
+              <label for="postal">Postcode</label>
+              <input type="text" class="form-control" id="postal" name="postal" [(ngModel)]="organization.postalCode">
+            </div>
+
+            <div class="form-group mb-4 col-12 col-md-8 mt-3">
+              <label for="adres">Adres</label>
+              <input type="text" class="form-control" id="adres" name="adres" [(ngModel)]="organization.address">
+            </div>
+
+            <div class="btn-group" role=group>
+              <app-button-back [buttonText]="'Vorige stap'" (click)="goPrev(progress)" ngClass="pr-3"></app-button-back>
+              <app-button [buttonText]="'Volgende stap'" (click)="goNext(progress)"></app-button>
+            </div>
+
+          </app-step>
+          <app-step>
+            <div class="col-12">
+              <h5>Logingegevens</h5>
+            </div>
+            <div class="form-group mb-4 col-12 col-md-8 mt-3">
+              <label for="voornaam">Email</label>
+              <input type="email" class="form-control" id="email" name="email" [(ngModel)]="organization.email">
+            </div>
+
+            <div class="form-group mb-4 col-4">
+              <label for="wachtwoord">Wachtwoord</label>
+              <input type="password" class="form-control" name="wachtwoord" id="wachtwoord" required
+                [(ngModel)]="organization.password">
+            </div>
+
+            <div class="form-group mb-4 col-4">
+              <label for="wachtwoordRepeat">Wachtwoord (herhaling)</label>
+              <input type="password" class="form-control" name="wachtwoordRepeat" id="wachtwoordRepeat" required
+                [(ngModel)]="this.passwordRepeat">
+            </div>
+            <div class="btn-group" role=group>
+              <app-button-back [buttonText]="'Vorige stap'" (click)="goPrev(progress)" ngClass="pr-3"></app-button-back>
+              <app-button [buttonText]="'Registreren'" (click)="onSubmit()"></app-button>
+            </div>
+          </app-step>
+        </app-form>
+      </form>
+    </div>
+  </div>
+</div>
